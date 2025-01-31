@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}News Detail{% endblock %}
+
+    {% block contents %}
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col offset-3">
+                <h2>{{object.title}}</h2>
+                <p>{{object.comment}}</p>
+                <br>
+
+                <p>{{object.posted_at}}に投稿</p>
+
+                {% if request.user == object.user %}
+                <form method="POST">
+                <a href="{% url 'news:news_delete' object.pk %}" class="btn btn-primary my-2">Delate</a>
+                {% endif %}
+                <a href="{% url 'news:mypage' %}" class="btn btn-primary my-2">My Page</a>
+                </div>
+        </div>
+    </div>
+    {% endblock %}
